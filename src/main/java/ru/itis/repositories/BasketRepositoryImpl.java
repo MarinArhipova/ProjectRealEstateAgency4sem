@@ -34,20 +34,6 @@ public class BasketRepositoryImpl implements BasketRepository {
             "    )" +
             "  )";
 
-    //language=SQL
-    private static final String SQL_SELECT_ALL2 = "select * " +
-            "from " +
-            "(select common.product_id, common.title, common.img, common.price\n" +
-            "from common\n" +
-            "union\n" +
-            "select commerc.product_id, commerc.title, commerc.img, commerc.price from commerc\n" +
-            "union\n" +
-            "select cottage.product_id, cottage.title, cottage.img, cottage.price from cottage)" +
-            "where cottage.product_id IN(" +
-            "  select basket_product.product_id from basket_product where basket_id IN (" +
-            "    select basket_id from basket where basket.user_id = ?" +
-            "    )" +
-            "  )";
 
     //language=SQL
     private static final String SELECT_ALL_PRODUCTS_BY_BASKETID =
@@ -68,9 +54,7 @@ public class BasketRepositoryImpl implements BasketRepository {
     public BasketRepositoryImpl(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
-
-    private Basket model;
-
+//  Basket model;
     private RowMapper<Basket> basketRowMapper = (resultSet, i) -> Basket.builder()
             .basketID(resultSet.getLong("basket_id"))
             .userID(resultSet.getLong("user_id"))
@@ -86,10 +70,10 @@ public class BasketRepositoryImpl implements BasketRepository {
             .build();
 
 
-    @Override
-    public List<Basket> findAll() {
-        return jdbcTemplate.query(SQL_SELECT_ALL, basketRowMapper, model.getUser().getUserID());
-    }
+//    @Override
+//    public List<Basket> findAll() {
+//        return jdbcTemplate.query(SQL_SELECT_ALL, basketRowMapper, model.getUser().getUserID());}
+
 
     @Override
     public List<Product> findAllProductsByUserID(User user) {
@@ -107,10 +91,10 @@ public class BasketRepositoryImpl implements BasketRepository {
 
     }
 
-    @Override
-    public void deleteProductsByUserID(Long id) {
-        jdbcTemplate.query(DELETE_DATA_FROM_BASKET_BY_USERID, basketRowMapper, model.getUser().getUserID());
-    }
+//    @Override
+//    public void deleteProductsByUserID(Long id) {
+//        jdbcTemplate.query(DELETE_DATA_FROM_BASKET_BY_USERID, basketRowMapper, model.getUser().getUserID());
+//    }
 
     @Override
     public void update(Basket model) {
@@ -137,5 +121,14 @@ public class BasketRepositoryImpl implements BasketRepository {
     @Override
     public Basket getBasketByUserId(long userId) {
         return jdbcTemplate.queryForObject(SELECT_BASKET_BY_USER_ID, basketRowMapper, userId);
+    }
+
+    @Override
+    public void deleteProductsByUserID(Long id) {
+    }
+
+    @Override
+    public List<Basket> findAll() {
+        return null;
     }
 }

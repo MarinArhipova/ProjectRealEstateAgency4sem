@@ -67,9 +67,7 @@
         </div>
     </div>
 
-
-<#--    <input type="submit" class="submit_feedback_2" data-id="${basket_product.basket_id}"-->
-<#--    value="Добавить">-->
+    <input type="submit" class="submit_feedback_2" value="Отправить заявку">
 
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

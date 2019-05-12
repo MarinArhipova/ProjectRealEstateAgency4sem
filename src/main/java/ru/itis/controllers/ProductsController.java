@@ -1,7 +1,5 @@
 package ru.itis.controllers;
 
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.http.MediaType;
 import ru.itis.models.Basket;
 import ru.itis.models.Product;
 import org.springframework.stereotype.Controller;
@@ -50,19 +48,29 @@ public class ProductsController {
     @PostMapping(value = "/shop")
     public void addProductInBasket(@RequestParam("id") Long id, HttpServletRequest request) {
         Cookie authCookie = authCookie(request.getCookies());
-        if (authCookie != null) {
-            String auth = authCookie.getValue();
-            User user = usersRepository.findByCookie(auth);
+        System.out.println(id + " Ура, я дошел");
+
+        Cookie[] cookies = request.getCookies();
+        String cookieValue = "";
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("auth")) {
+                cookieValue = cookie.getValue();
+            }
+        }
+//        if (authCookie != null) {
+//            String auth = authCookie.getValue();
+//            System.out.println("auth = "+auth);
+            User user = usersRepository.findByCookie(cookieValue);
             Basket usersBasket = basketRepository.getBasketByUserId(user.getUserID());
             basketRepository.addProductToBasket(usersBasket.getBasketID(), id);
         }
-    }
+
 
     private Cookie authCookie(Cookie[] cookies) {
         if (cookies != null) {
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals("auth")) {
-                    if (usersService.isExistByCookie(cookie.getValue())) {
+                    if (usersService.isExistByCookie((String)cookie.getValue())) {
                         return cookie;
                     }
                 }

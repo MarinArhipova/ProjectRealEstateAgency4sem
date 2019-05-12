@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="for_project_28_12@localhost">
+  <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.15">
+    <root id="1">
+      <ServerVersion>9.5.14</ServerVersion>
+    </root>
+    <database id="2" parent="1" name="11_03">
+      <ObjectId>43720</ObjectId>
+      <StateNumber>5045</StateNumber>
+      <Owner>postgres</Owner>
+    </database>
+    <database id="3" parent="1" name="23/11/bd/rel">
+      <ObjectId>35332</ObjectId>
+      <StateNumber>4413</StateNumber>
+      <Owner>postgres</Owner>
+    </database>
+    <database id="4" parent="1" name="2502office">
+      <ObjectId>43621</ObjectId>
+      <StateNumber>4800</StateNumber>
+      <Owner>postgres</Owner>
+    </database>
+    <database id="5" parent="1" name="Practice1">
+      <ObjectId>43595</ObjectId>
+      <StateNumber>4791</StateNumber>
+      <Owner>postgres</Owner>
+    </database>
+    <database id="6" parent="1" name="basket">
+      <ObjectId>33022</ObjectId>
+      <StateNumber>740</StateNumber>
+      <Owner>postgres</Owner>
+    </database>
+    <database id="7" parent="1" name="bd">
+      <ObjectId>35140</ObjectId>
+      <StateNumber>970</StateNumber>
+      <Owner>postgres</Owner>
+    </database>
+    <database id="8" parent="1" name="db">
+      <ObjectId>33065</ObjectId>
+      <StateNumber>746</StateNumber>
+      <Owner>user111</Owner>
+    </database>
+    <database id="9" parent="1" name="db1">
+      <ObjectId>33066</ObjectId>
+      <StateNumber>747</StateNumber>
+      <Owner>user111</Owner>
+    </database>
+    <database id="10" parent="1" name="db2">
+      <ObjectId>33067</ObjectId>
+      <StateNumber>753</StateNumber>
+      <Owner>user4</Owner>
+    </database>
+    <database id="11" parent="1" name="dbtb">
+      <ObjectId>33070</ObjectId>
+      <StateNumber>754</StateNumber>
+      <Owner>postgres</Owner>
+    </database>
+    <database id="12" parent="1" name="exx7">
+      <ObjectId>33013</ObjectId>
+      <StateNumber>730</StateNumber>
+      <Owner>postgres</Owner>
+    </database>
+    <database id="13" parent="1" name="filmografiya">
+      <ObjectId>33194</ObjectId>
+      <StateNumber>799</StateNumber>
+      <Owner>user7</Owner>
+    </database>
+    <database id="14" parent="1" name="filmographiya">
+      <ObjectId>33210</ObjectId>
+      <StateNumber>808</StateNumber>
+      <Owner>user7</Owner>
+    </database>
+    <database id="15" parent="1" name="for_project_28_12">
+      <ObjectId>43402</ObjectId>
+      <StateNumber>4658</StateNumber>
+      <Owner>postgres</Owner>
+      <IntrospectionStateNumber>5399</IntrospectionStateNumber>
+      <Current>1</Current>
+      <Visible>1</Visible>
+      <Relations>sequence|table|43409|43411|1
+sequence|table|43417|43419|1
+sequence|table|43425|43427|1
+</Relations>
+    </database>
+    <database id="16" parent="1" name="my_db">
+      <ObjectId>32984</ObjectId>
+      <StateNumber>718</StateNumber>
+      <Owner>user_db</Owner>
+    </database>
+    <database id="17" parent="1" name="postgres">
+      <ObjectId>12373</ObjectId>
+      <Comment>default administrative connection database</Comment>
+      <StateNumber>614</StateNumber>
+      <Owner>postgres</Owner>
+    </database>
+    <database id="18" parent="1" name="project_hibernate">
+      <ObjectId>43795</ObjectId>
+      <StateNumber>5142</StateNumber>
+      <Owner>postgres</Owner>
+    </database>
+    <database id="19" parent="1" name="sam_rab">
+      <ObjectId>33397</ObjectId>
+      <StateNumber>898</StateNumber>
+      <Owner>postgres</Owner>
+    </database>
+    <database id="20" parent="1" name="schedule2">
+      <ObjectId>43531</ObjectId>
+      <StateNumber>4780</StateNumber>
+      <Owner>postgres</Owner>
+    </database>
+    <database id="21" parent="1" name="schedule_for_students">
+      <ObjectId>43454</ObjectId>
+      <StateNumber>4758</StateNumber>
+      <Owner>postgres</Owner>
+    </database>
+    <role id="22" parent="1" name="postgres">
+      <ObjectId>10</ObjectId>
+      <SuperRole>1</SuperRole>
+      <Inherit>1</Inherit>
+      <CreateRole>1</CreateRole>
+      <CreateDb>1</CreateDb>
+      <CanLogin>1</CanLogin>
+      <ConnectionLimit>-1</ConnectionLimit>
+      <Replication>1</Replication>
+      <BypassRls>1</BypassRls>
+    </role>
+    <role id="23" parent="1" name="user1">
+      <ObjectId>16397</ObjectId>
+      <Inherit>1</Inherit>
+      <CreateDb>1</CreateDb>
+      <CanLogin>1</CanLogin>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="24" parent="1" name="user11">
+      <ObjectId>16393</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="25" parent="1" name="user111">
+      <ObjectId>33017</ObjectId>
+      <Inherit>1</Inherit>
+      <CreateDb>1</CreateDb>
+      <CanLogin>1</CanLogin>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="26" parent="1" name="user3">
+      <ObjectId>16615</ObjectId>
+      <Inherit>1</Inherit>
+      <CreateDb>1</CreateDb>
+      <CanLogin>1</CanLogin>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="27" parent="1" name="user4">
+      <ObjectId>33069</ObjectId>
+      <Inherit>1</Inherit>
+      <CreateDb>1</CreateDb>
+      <CanLogin>1</CanLogin>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="28" parent="1" name="user7">
+      <ObjectId>33193</ObjectId>
+      <Inherit>1</Inherit>
+      <CreateDb>1</CreateDb>
+      <CanLogin>1</CanLogin>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="29" parent="1" name="user_ars">
+      <ObjectId>33021</ObjectId>
+      <Inherit>1</Inherit>
+      <CanLogin>1</CanLogin>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="30" parent="1" name="user_db">
+      <ObjectId>32983</ObjectId>
+      <Inherit>1</Inherit>
+      <CanLogin>1</CanLogin>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <schema id="31" parent="15" name="information_schema">
+      <ObjectId>12081</ObjectId>
+      <StateNumber>564</StateNumber>
+      <Owner>postgres</Owner>
+    </schema>
+    <schema id="32" parent="15" name="pg_catalog">
+      <ObjectId>11</ObjectId>
+      <Comment>system catalog schema</Comment>
+      <StateNumber>561</StateNumber>
+      <Owner>postgres</Owner>
+    </schema>
+    <schema id="33" parent="15" name="pg_temp_1">
+      <ObjectId>11816</ObjectId>
+      <StateNumber>23</StateNumber>
+      <Owner>postgres</Owner>
+    </schema>
+    <schema id="34" parent="15" name="pg_toast">
+      <ObjectId>99</ObjectId>
+      <Comment>reserved schema for TOAST tables</Comment>
+      <StateNumber>1</StateNumber>
+      <Owner>postgres</Owner>
+    </schema>
+    <schema id="35" parent="15" name="pg_toast_temp_1">
+      <ObjectId>11817</ObjectId>
+      <StateNumber>23</StateNumber>
+      <Owner>postgres</Owner>
+    </schema>
+    <schema id="36" parent="15" name="public">
+      <ObjectId>2200</ObjectId>
+      <Comment>standard public schema</Comment>
+      <StateNumber>562</StateNumber>
+      <Owner>postgres</Owner>
+      <IntrospectionStateNumber>5400</IntrospectionStateNumber>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <access-method id="37" parent="15" name="btree">
+      <ObjectId>403</ObjectId>
+      <Comment>b-tree index access method</Comment>
+      <StateNumber>1</StateNumber>
+    </access-method>
+    <access-method id="38" parent="15" name="hash">
+      <ObjectId>405</ObjectId>
+      <Comment>hash index access method</Comment>
+      <StateNumber>1</StateNumber>
+    </access-method>
+    <access-method id="39" parent="15" name="gist">
+      <ObjectId>783</ObjectId>
+      <Comment>GiST index access method</Comment>
+      <StateNumber>1</StateNumber>
+    </access-method>
+    <access-method id="40" parent="15" name="gin">
+      <ObjectId>2742</ObjectId>
+      <Comment>GIN index access method</Comment>
+      <StateNumber>1</StateNumber>
+    </access-method>
+    <access-method id="41" parent="15" name="spgist">
+      <ObjectId>4000</ObjectId>
+      <Comment>SP-GiST index access method</Comment>
+      <StateNumber>1</StateNumber>
+    </access-method>
+    <access-method id="42" parent="15" name="brin">
+      <ObjectId>3580</ObjectId>
+      <Comment>block range index (BRIN) access method</Comment>
+      <StateNumber>1</StateNumber>
+    </access-method>
+    <extension id="43" parent="15" name="plpgsql">
+      <ObjectId>12355</ObjectId>
+      <Comment>PL/pgSQL procedural language</Comment>
+      <StateNumber>567</StateNumber>
+      <Version>1.0</Version>
+      <SchemaName>pg_catalog</SchemaName>
+      <SchemaId>11</SchemaId>
+    </extension>
+    <sequence id="44" parent="36" name="basket_basket_id_seq">
+      <ObjectId>43425</ObjectId>
+      <StateNumber>4662</StateNumber>
+      <Owner>postgres</Owner>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+    </sequence>
+    <sequence id="45" parent="36" name="product_product_id_seq">
+      <ObjectId>43409</ObjectId>
+      <StateNumber>4660</StateNumber>
+      <Owner>postgres</Owner>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+    </sequence>
+    <sequence id="46" parent="36" name="shop_user_user_id_seq">
+      <ObjectId>43417</ObjectId>
+      <StateNumber>4661</StateNumber>
+      <Owner>postgres</Owner>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+    </sequence>
+    <table id="47" parent="36" name="auth">
+      <ObjectId>43403</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>4659</StateNumber>
+    </table>
+    <table id="48" parent="36" name="basket">
+      <ObjectId>43427</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>4663</StateNumber>
+    </table>
+    <table id="49" parent="36" name="basket_product">
+      <ObjectId>43438</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>4663</StateNumber>
+    </table>
+    <table id="50" parent="36" name="product">
+      <ObjectId>43411</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>4664</StateNumber>
+    </table>
+    <table id="51" parent="36" name="shop_user">
+      <ObjectId>43419</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>5325</StateNumber>
+    </table>
+    <table id="52" parent="36" name="shop_user22">
+      <ObjectId>43796</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>5322</StateNumber>
+    </table>
+    <column id="53" parent="47" name="user_id">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <StateNumber>4659</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="54" parent="47" name="cookie_value">
+      <Position>2</Position>
+      <DataType>varchar(500)|0s</DataType>
+      <StateNumber>4659</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="55" parent="48" name="basket_id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>4662</StateNumber>
+      <DefaultExpression>nextval(&apos;basket_basket_id_seq&apos;::regclass)</DefaultExpression>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="56" parent="48" name="user_id">
+      <Position>2</Position>
+      <DataType>bigint|0s</DataType>
+      <StateNumber>4662</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <index id="57" parent="48" name="basket_pkey">
+      <ObjectId>43431</ObjectId>
+      <StateNumber>4662</StateNumber>
+      <ColNames>basket_id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+    </index>
+    <key id="58" parent="48" name="basket_pkey">
+      <ObjectId>43432</ObjectId>
+      <StateNumber>4662</StateNumber>
+      <ColNames>basket_id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>basket_pkey</UnderlyingIndexName>
+    </key>
+    <foreign-key id="59" parent="48" name="basket_user_id_fkey">
+      <ObjectId>43433</ObjectId>
+      <StateNumber>4662</StateNumber>
+      <ColNames>user_id</ColNames>
+      <RefTableId>43419</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>shop_user</RefTableName>
+      <RefKeyName>shop_user_pkey</RefKeyName>
+      <RefColNames>user_id</RefColNames>
+    </foreign-key>
+    <column id="60" parent="49" name="basket_id">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <StateNumber>4663</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="61" parent="49" name="product_id">
+      <Position>2</Position>
+      <DataType>bigint|0s</DataType>
+      <StateNumber>4663</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <foreign-key id="62" parent="49" name="basket_product_basket_id_fkey">
+      <ObjectId>43441</ObjectId>
+      <StateNumber>4663</StateNumber>
+      <ColNames>basket_id</ColNames>
+      <RefTableId>43427</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>basket</RefTableName>
+      <RefKeyName>basket_pkey</RefKeyName>
+      <RefColNames>basket_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="63" parent="49" name="basket_product_product_id_fkey">
+      <ObjectId>43446</ObjectId>
+      <StateNumber>4663</StateNumber>
+      <ColNames>product_id</ColNames>
+      <RefTableId>43411</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>product</RefTableName>
+      <RefKeyName>product_pkey</RefKeyName>
+      <RefColNames>product_id</RefColNames>
+    </foreign-key>
+    <column id="64" parent="50" name="product_id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>4660</StateNumber>
+      <DefaultExpression>nextval(&apos;product_product_id_seq&apos;::regclass)</DefaultExpression>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="65" parent="50" name="title">
+      <Position>2</Position>
+      <DataType>varchar(30)|0s</DataType>
+      <StateNumber>4660</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="66" parent="50" name="countofrooms">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>4660</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="67" parent="50" name="img">
+      <Position>4</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <StateNumber>4660</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="68" parent="50" name="price">
+      <Position>5</Position>
+      <DataType>varchar(30)|0s</DataType>
+      <StateNumber>4660</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="69" parent="50" name="category">
+      <Position>6</Position>
+      <DataType>varchar(30)|0s</DataType>
+      <StateNumber>4664</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="70" parent="50" name="product_pkey">
+      <ObjectId>43415</ObjectId>
+      <StateNumber>4660</StateNumber>
+      <ColNames>product_id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+    </index>
+    <key id="71" parent="50" name="product_pkey">
+      <ObjectId>43416</ObjectId>
+      <StateNumber>4660</StateNumber>
+      <ColNames>product_id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>product_pkey</UnderlyingIndexName>
+    </key>
+    <column id="72" parent="51" name="user_id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>4661</StateNumber>
+      <DefaultExpression>nextval(&apos;shop_user_user_id_seq&apos;::regclass)</DefaultExpression>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="73" parent="51" name="firstname">
+      <Position>2</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <StateNumber>4665</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="74" parent="51" name="lastname">
+      <Position>3</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <StateNumber>4666</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="75" parent="51" name="patronymic">
+      <Position>4</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <StateNumber>4667</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="76" parent="51" name="phonenumber">
+      <Position>5</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <StateNumber>4668</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="77" parent="51" name="email">
+      <Position>6</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <StateNumber>4669</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="78" parent="51" name="password">
+      <Position>7</Position>
+      <DataType>varchar(600)|0s</DataType>
+      <StateNumber>4670</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="79" parent="51" name="shop_user_pkey">
+      <ObjectId>43423</ObjectId>
+      <StateNumber>4661</StateNumber>
+      <ColNames>user_id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+    </index>
+    <key id="80" parent="51" name="shop_user_pkey">
+      <ObjectId>43424</ObjectId>
+      <StateNumber>4661</StateNumber>
+      <ColNames>user_id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>shop_user_pkey</UnderlyingIndexName>
+    </key>
+    <column id="81" parent="52" name="id">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>5150</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="82" parent="52" name="name">
+      <Position>2</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <StateNumber>5150</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="83" parent="52" name="age">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>5150</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="84" parent="52" name="shop_user_pkey1">
+      <ObjectId>43799</ObjectId>
+      <StateNumber>5150</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+    </index>
+    <key id="85" parent="52" name="shop_user_pkey1">
+      <ObjectId>43800</ObjectId>
+      <StateNumber>5150</StateNumber>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>shop_user_pkey1</UnderlyingIndexName>
+    </key>
+  </database-model>
+</dataSource>

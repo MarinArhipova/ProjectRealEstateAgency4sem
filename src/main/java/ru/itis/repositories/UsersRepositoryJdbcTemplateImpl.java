@@ -10,7 +10,6 @@ import org.springframework.jdbc.support.KeyHolder;
 import javax.sql.DataSource;
 import java.sql.PreparedStatement;
 import java.util.List;
-import java.util.Optional;
 
 @Component
 public class UsersRepositoryJdbcTemplateImpl implements UsersRepository {
@@ -33,7 +32,7 @@ public class UsersRepositoryJdbcTemplateImpl implements UsersRepository {
 
     //language=SQL
     private static final String SQL_SELECT_BY_COOKIE =
-            "select * from shop_user where user_id IN (select user_id from auth where cookie_value = ?);";
+            "select * from shop_user sh join auth a on sh.user_id = a.user_id where a.cookie_value=?;";
 
     private JdbcTemplate jdbcTemplate;
 
@@ -94,9 +93,4 @@ public class UsersRepositoryJdbcTemplateImpl implements UsersRepository {
     public User findByEmail(String email) {
             return jdbcTemplate.queryForObject(SQL_SELECT_BY_EMAIL, userRowMapper, email);
     }
-
-//    @Override
-//    public Optional<User> findOneByConfirmString(String confirmString) {
-//        return Optional.empty();
-//    }
 }

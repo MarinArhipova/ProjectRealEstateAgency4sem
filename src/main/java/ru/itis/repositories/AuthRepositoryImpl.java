@@ -1,11 +1,12 @@
 package ru.itis.repositories;
 
-import org.springframework.stereotype.Component;
-import ru.itis.models.Auth;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
+import ru.itis.models.Auth;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,10 +15,43 @@ import java.util.Optional;
 
 @Component
 public class AuthRepositoryImpl implements AuthRepository {
-
 //    @Autowired
-//    @Lazy
 //    SessionFactory sessionFactory;
+//
+//    EntityManager em;
+//
+//    @Autowired
+//    public AuthRepositoryImpl(@Qualifier(value = "entityManagerFactory") EntityManagerFactory emf) {
+//        em = emf.createEntityManager();
+//    }
+//
+//    @Override
+//    public Optional<Auth> findByCookieValue(String cookieValue) {
+//        Auth u = em.find(Auth.class, cookieValue);
+//return Optional.ofNullable(u);
+//    }
+//
+//    @Override
+//    public List<Auth> findAll() {
+//        return null;
+//    }
+//
+//    @Override
+//    public void save(Auth model) {
+//        em.getTransaction().begin();
+//        em.persist(model);
+//        em.getTransaction().commit();
+//    }
+//
+//    @Override
+//    public void delete(Auth model) {
+//
+//    }
+//
+//    @Override
+//    public void update(Auth model) {
+//
+//    }
 
     //language=SQL
     private static final String SQL_INSERT =
@@ -36,7 +70,6 @@ public class AuthRepositoryImpl implements AuthRepository {
     @Autowired
     public AuthRepositoryImpl(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
-//        System.out.println(this.jdbcTemplate == null);
     }
 
     private RowMapper<Auth> authRowMapper = new RowMapper<Auth>() {
@@ -61,8 +94,11 @@ public class AuthRepositoryImpl implements AuthRepository {
 
     @Override
     public void save(Auth model) {
-        jdbcTemplate.update(SQL_INSERT, model.getUserId(), model.getCookieValue());
+        jdbcTemplate.update(SQL_INSERT, model.getId(), model.getCookieValue());
     }
+//    public void save(Auth model) {
+//        jdbcTemplate.update(SQL_INSERT, model.getUserId(), model.getCookieValue());
+//    }
 
     @Override
     public void delete(Auth model) {

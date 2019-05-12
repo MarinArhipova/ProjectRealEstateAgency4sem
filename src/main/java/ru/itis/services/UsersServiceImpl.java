@@ -61,7 +61,7 @@ public class UsersServiceImpl implements UsersService {
             String cookieValue = UUID.randomUUID().toString();
             Auth auth = Auth.builder()
 //                    .user(user)
-                    .userId(user.getUserID())
+                    .id(user.getUserID())
                     .cookieValue(cookieValue)
                     .build();
             authRepository.save(auth);

@@ -49,15 +49,6 @@ public class ProductsServiceImpl implements ProductsService {
     @Autowired
     private ProductsRepository productsRepository;
 
-//    public ProductsServiceImpl(ProductsRepository productsRepository) {
-//        this.productsRepository = productsRepository;
-//    }
-
-//    @Override
-//    public List<Product> findByCountOfRooms(Integer countOfRooms) {
-//        return productsRepository.findByCountOfRooms(countOfRooms);
-//    }
-
     @Override
     public List<Product> getAll(String str2) {
         return productsRepository.findAllProducts(str2);
@@ -68,10 +59,6 @@ public class ProductsServiceImpl implements ProductsService {
         return productsRepository.findAll();
     }
 
-//    @Override
-//    public Product getCottageById(Long id) {
-//        return productsRepository.findProductById(id);
-//    }
 
 //    @Override
 //    public void addProduct(AddProductForm form) {
