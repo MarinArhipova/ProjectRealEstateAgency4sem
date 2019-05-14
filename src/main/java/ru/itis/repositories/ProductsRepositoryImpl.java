@@ -7,7 +7,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
-
 import javax.sql.DataSource;
 import java.sql.PreparedStatement;
 import java.util.List;
@@ -17,6 +16,7 @@ public class ProductsRepositoryImpl implements ProductsRepository {
     //language=SQL
     private static final String SQL_INSERT =
             "insert into product (product_id, img, title, price, category) values (?, ?, ?, ?, ?);";
+
     //language=SQL
     private static final String SQL_SELECT_ALL_PRODUCTS =
             "select * from product where category=?";
@@ -24,10 +24,6 @@ public class ProductsRepositoryImpl implements ProductsRepository {
     //language=SQL
     private static final String SQL_SELECT_ALL =
             "select * from product";
-
-    //language=SQL
-    private static final String SQL_SELECT_COUNT_OF_ROOMS =
-            "select * from product where countofrooms = ?";
 
     //language=SQL
     private static final String SQL_SELECT_GET_PRODUCT_BY_ID =
@@ -42,7 +38,7 @@ public class ProductsRepositoryImpl implements ProductsRepository {
     }
 
 
-    private RowMapper<Product> productDtoRowMapper = (resultSet, i) -> Product.builder()
+    private RowMapper<Product> productRowMapper = (resultSet, i) -> Product.builder()
             .id(resultSet.getLong("product_id"))
             .img(resultSet.getString("img"))
             .title(resultSet.getString("title"))
@@ -52,15 +48,14 @@ public class ProductsRepositoryImpl implements ProductsRepository {
 
     @Override
     public List<Product> findAllProducts(String category) {
-        return jdbcTemplate.query(SQL_SELECT_ALL_PRODUCTS, productDtoRowMapper, category);
+        return jdbcTemplate.query(SQL_SELECT_ALL_PRODUCTS, productRowMapper, category);
     }
 
     @Override
     public Product findProductById(Long id) {
-        return jdbcTemplate.query(SQL_SELECT_GET_PRODUCT_BY_ID, productDtoRowMapper, id).get(0);
+        return jdbcTemplate.query(SQL_SELECT_GET_PRODUCT_BY_ID, productRowMapper, id).get(0);
 
     }
-
 
     @Override
     public void save(Product model) {
@@ -82,7 +77,6 @@ public class ProductsRepositoryImpl implements ProductsRepository {
 
     @Override
     public void delete(Product model) {
-
     }
 
 
@@ -92,6 +86,6 @@ public class ProductsRepositoryImpl implements ProductsRepository {
 
     @Override
     public List<Product> findAll() {
-        return jdbcTemplate.query(SQL_SELECT_ALL, productDtoRowMapper);
+        return jdbcTemplate.query(SQL_SELECT_ALL, productRowMapper);
     }
 }

@@ -29,7 +29,7 @@
                             </h1>
                             <form method="post" class="form" action="/signUp">
                                 <#if error??>
-                                    <h1>Такой логин уже используется</h1>
+                                    <h1 style="margin: 16px; color: #24ace3; opacity: 0.5 ;">Такой логин уже используется</h1>
                                 </#if>
                                 <p><input name="firstName" placeholder="Имя" class="feedback_input"></p>
                                 <p><input name="lastName" placeholder="Фамилия" class="feedback_input"></p>

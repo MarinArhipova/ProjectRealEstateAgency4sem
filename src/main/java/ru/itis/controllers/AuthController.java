@@ -33,13 +33,15 @@ public class AuthController {
                 .phoneNumber(phoneNumber)
                 .hashPassword(password)
                 .build();
-        usersService.signUp(signUpForm);
-//        if (usersService.checkReg(signUpForm.getEmail())) {
-//            return "redirect:/signIn";
-//        }
-//        model.addAttribute("error", "error");
-//        return "signUp";
-        return "redirect:/signIn";
+
+        if (!usersService.checkReg(signUpForm.getEmail())) {
+            usersService.signUp(signUpForm);
+            return "redirect:/signIn";
+
+        } else {
+            model.addAttribute("error", "error");
+            return "signUp";
+        }
     }
 
     @RequestMapping(value = "/signIn", method = RequestMethod.GET)

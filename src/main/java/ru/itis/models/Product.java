@@ -14,10 +14,8 @@ import java.util.List;
 
 public class Product {
     private Long id;
-
     private String img;
     private String title;
-    private Integer countOfRooms;
     private String price;
     private String category;
 

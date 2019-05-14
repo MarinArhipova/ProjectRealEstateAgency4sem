@@ -57,7 +57,6 @@ public class BasketRepositoryImpl implements BasketRepository {
             .id(resultSet.getLong("product_id"))
             .img(resultSet.getString("img"))
             .title(resultSet.getString("title"))
-            .countOfRooms(resultSet.getInt("countOfRooms"))
             .price(resultSet.getString("price"))
             .category(resultSet.getString("category"))
             .build();
@@ -80,13 +79,10 @@ public class BasketRepositoryImpl implements BasketRepository {
     @Override
     public void addProductToBasket(long basketId, long productId) {
         jdbcTemplate.update(INSERT_PRODUCT_TO_BASKET, basketId, productId);
-
     }
-
 
     @Override
     public void update(Basket model) {
-
     }
 
     @Override
@@ -98,13 +94,6 @@ public class BasketRepositoryImpl implements BasketRepository {
     public void delete(Basket model) {
         jdbcTemplate.update(SQL_DELETE_PRODUCT, model.getBasketID());
     }
-
-
-    @Override
-    public Optional<Basket> findOne(Long id) {
-        return Optional.empty();
-    }
-
 
     @Override
     public Basket getBasketByUserId(long userId) {

@@ -1,6 +1,5 @@
 package ru.itis.services;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import ru.itis.forms.SignInForm;
 import ru.itis.forms.SignUpForm;
@@ -12,8 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import ru.itis.repositories.BasketRepository;
 import ru.itis.repositories.UsersRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-import java.util.List;
 import java.util.UUID;
 
 @Component
@@ -29,16 +26,6 @@ public class UsersServiceImpl implements UsersService {
 
     @Autowired
     AuthRepository authRepository;
-
-    @Override
-    public List<User> getAllUsers() {
-        return null;
-    }
-
-    @Override
-    public void addUser(User user) {
-
-    }
 
     @Override
     public String signIn(SignInForm signInForm) {
@@ -95,4 +82,6 @@ public class UsersServiceImpl implements UsersService {
         }
         return false;
     }
+
+
 }

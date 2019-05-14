@@ -10,8 +10,6 @@ import java.util.Optional;
 public interface BasketRepository extends CrudRepository<Basket> {
     void save(Basket model);
 
-    Optional<Basket> findOne(Long id);
-
     List<Product> findAllProductsByUserID(User user);
 
     void addProductToBasket(long productId, long basketId);

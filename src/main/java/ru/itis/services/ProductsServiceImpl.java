@@ -9,18 +9,12 @@ import java.util.List;
 
 @Component
 public class ProductsServiceImpl implements ProductsService {
-
     @Autowired
     private ProductsRepository productsRepository;
 
     @Override
     public List<Product> getAll(String str2) {
         return productsRepository.findAllProducts(str2);
-    }
-
-    @Override
-    public List<Product> forTable() {
-        return productsRepository.findAll();
     }
 
 }

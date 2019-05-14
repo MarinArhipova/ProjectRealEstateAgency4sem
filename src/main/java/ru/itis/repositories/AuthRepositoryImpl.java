@@ -20,7 +20,6 @@ public class AuthRepositoryImpl implements AuthRepository {
     public Auth findByCookieValue(String cookieValue) {
 //        Auth u = em.find(Auth.class, cookieValue);
 //        return u;
-
         Query q = em.createQuery("SELECT u FROM Auth u WHERE cookieValue = :val");
         q.setParameter("val", cookieValue);
         Auth u = (Auth) q.getSingleResult();
@@ -35,9 +34,6 @@ public class AuthRepositoryImpl implements AuthRepository {
     @Override
     @Transactional
     public void save(Auth model) {
-//        em.getTransaction().begin();
-//        em.persist(model);
-//        em.getTransaction().commit();
         Query q = em.createNativeQuery("insert into auth(id, cookie_value) values (?, ?)");
         q.setParameter(1, model.getUserId());
         q.setParameter(2, model.getCookieValue());

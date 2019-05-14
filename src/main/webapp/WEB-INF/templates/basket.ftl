@@ -68,7 +68,7 @@
         </div>
     </div>
     <form method="post" action="/mail">
-        <p id="submission" style="text-align: center;"><button type="submit"  class="submit_feedback"  >Отправить заявку</button></p>
+        <p id="submission" style="text-align: center;"><button type="submit"  class="submit_feedback"  onclick="f()">Отправить заявку</button></p>
     </form>
 
 </div>
@@ -88,9 +88,11 @@
             url: '/deleteproduct',
             data: {
                 id: id
-            }
-        })
+            },
+            success:  $('#' + id).remove()
+    })
     }
+    function f() {alert("Подтвердите отправку заявки. Если все выбрано верно, то нажмите 'ОК'. Скоро с вами свяжется наш риэлтор!");}
 </script>
 </body>
 </html>

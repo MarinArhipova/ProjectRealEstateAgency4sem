@@ -1,5 +1,6 @@
 package ru.itis.repositories;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Component;
 import ru.itis.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +23,9 @@ public class UsersRepositoryJdbcTemplateImpl implements UsersRepository {
     private static final String SQL_SELECT_ALL =
             "select * from shop_user";
 
-    //language=SQL
-    private static final String SQL_SELECT_BY_ID =
-            "select * from shop_user where user_id = ?";
+//    //language=SQL
+//    private static final String SQL_SELECT_BY_ID =
+//            "select * from shop_user where user_id = ?";
 
     //language=SQL
     private static final String SQL_SELECT_BY_EMAIL =
@@ -54,9 +55,10 @@ public class UsersRepositoryJdbcTemplateImpl implements UsersRepository {
     public User findByCookie(String cookie) {
         return jdbcTemplate.queryForObject(SQL_SELECT_BY_COOKIE, userRowMapper, cookie);
     }
-    public User findById(Long id) {
-        return jdbcTemplate.queryForObject(SQL_SELECT_BY_ID, userRowMapper, id);
-    }
+
+//    public User findById(Long id) {
+//        return jdbcTemplate.queryForObject(SQL_SELECT_BY_ID, userRowMapper, id);
+//    }
 
     @Override
     public void save(User model) {
@@ -94,6 +96,11 @@ public class UsersRepositoryJdbcTemplateImpl implements UsersRepository {
 
     @Override
     public User findByEmail(String email) {
+        try {
             return jdbcTemplate.queryForObject(SQL_SELECT_BY_EMAIL, userRowMapper, email);
+    } catch (
+    EmptyResultDataAccessException e) {
+        return null;
+    }
     }
 }
