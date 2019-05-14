@@ -14,6 +14,13 @@ import java.util.List;
 public class Basket {
     private Long basketID;
     private Long userID;
+//
+//    private BasketState state;
+//    private String confirmString;
+//
+//    public boolean isEnabled() {
+//        return this.getState().equals(BasketState.CONFIRMED);
+//    }
 
     private User user;
     private List<Product> products;

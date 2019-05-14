@@ -21,9 +21,9 @@
     <header>
         <div class="inner">
             <h1 class="logo"><a href="/"></a></h1>
-            <a href="" style="padding:0 10px 0 10px "><i class="far fa-user fa-3x"
+            <a href="/logout" style="padding:0 10px 0 10px "><i class="far fa-user fa-3x"
                                                          style="float: right; color: #24ace3; opacity: 0.5 ; padding: 0 10px 0 10px"></i></a>
-            <a href="" style="padding: 0 10px 0 10px"><i class="fas fa-shopping-basket fa-3x"
+            <a href="/basket" style="padding: 0 10px 0 10px"><i class="fas fa-shopping-basket fa-3x"
                                                          style="float: right; color: #24ace3 ; opacity: 0.5; padding: 0 10px 0 10px"></i></a>
             <nav>
                 <ul class="sf-menu">
@@ -55,7 +55,8 @@
                                         <div class="col-7" style="padding:30px">
                                             <h3>${product.title}</h3>
                                             <span class="price1">Стоимость: ${product.price} руб.</span>
-
+                                            <input type="submit" class="submit_feedback" id="${product.id}"
+                                                   value="Удалить" onclick="senderDelete(${product.id})">
                                         </div>
                                     </div>
                                 </div>
@@ -66,10 +67,12 @@
             </div>
         </div>
     </div>
-
-    <input type="submit" class="submit_feedback_2" value="Отправить заявку">
+    <form method="post" action="/mail">
+        <p id="submission" style="text-align: center;"><button type="submit"  class="submit_feedback"  >Отправить заявку</button></p>
+    </form>
 
 </div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
         integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
@@ -77,32 +80,17 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
-
-
-<#--<script type="text/javascript" charset="utf-8">-->
-<#--$(".submit_feedback").click(function () {-->
-<#--$.ajax({-->
-<#--type: 'post',-->
-<#--url: '/basket',-->
-<#--data: {-->
-<#--productId: $(this).attr("data-id");-->
-<#--}-->
-<#--})-->
-<#--});-->
-<#--</script>-->
-
-<#--<script>-->
-<#--function addProduct() {-->
-<#--let id = document.getElementById("id").value;-->
-<#--$.ajax({-->
-<#--type: 'post',-->
-<#--url: '/basket',-->
-<#--data: {-->
-<#--id: id-->
-<#--}-->
-<#--})-->
-<#--}-->
-
-
+<script>
+    function senderDelete(id) {
+        console.log(id);
+        $.ajax({
+            type: 'post',
+            url: '/deleteproduct',
+            data: {
+                id: id
+            }
+        })
+    }
+</script>
 </body>
 </html>

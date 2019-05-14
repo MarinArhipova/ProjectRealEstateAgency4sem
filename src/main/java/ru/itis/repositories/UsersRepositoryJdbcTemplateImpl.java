@@ -32,7 +32,7 @@ public class UsersRepositoryJdbcTemplateImpl implements UsersRepository {
 
     //language=SQL
     private static final String SQL_SELECT_BY_COOKIE =
-            "select * from shop_user sh join auth a on sh.user_id = a.user_id where a.cookie_value=?;";
+            "select * from shop_user sh join auth a on sh.user_id = a.id where a.cookie_value=?;";
 
     private JdbcTemplate jdbcTemplate;
 
@@ -53,6 +53,9 @@ public class UsersRepositoryJdbcTemplateImpl implements UsersRepository {
 
     public User findByCookie(String cookie) {
         return jdbcTemplate.queryForObject(SQL_SELECT_BY_COOKIE, userRowMapper, cookie);
+    }
+    public User findById(Long id) {
+        return jdbcTemplate.queryForObject(SQL_SELECT_BY_ID, userRowMapper, id);
     }
 
     @Override

@@ -17,7 +17,7 @@ public class ProductsRepositoryImpl implements ProductsRepository {
     //language=SQL
     private static final String SQL_INSERT =
             "insert into product (product_id, img, title, price, category) values (?, ?, ?, ?, ?);";
-
+    //language=SQL
     private static final String SQL_SELECT_ALL_PRODUCTS =
             "select * from product where category=?";
 

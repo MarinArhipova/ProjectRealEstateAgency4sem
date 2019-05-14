@@ -22,9 +22,9 @@ public class ProductsController {
 
     @Autowired
     private ProductsService productsService;
-
-    @Autowired
-    private UsersService usersService;
+//
+//    @Autowired
+//    private UsersService usersService;
 
     @Autowired
     private BasketRepository basketRepository;
@@ -32,22 +32,29 @@ public class ProductsController {
     @Autowired
     private UsersRepository usersRepository;
 
+    private Long currentUser(HttpServletRequest request) {
+        Cookie[] cookies = request.getCookies();
+        for (int i = 0; i < cookies.length; i++) {
+            if (cookies[i].getName().equals("userId")) {
+                return Long.valueOf(cookies[i].getValue());
+            }
+        }
+        return null;
+    }
+
     @GetMapping(value = "/shop/{category}")
-//    public String getProductsPage(@RequestParam(name="category") String category, ModelMap modelMap) {
     public String getProductsPage(HttpServletRequest req, @PathVariable String category, ModelMap modelMap) {
-        Cookie authCookie = authCookie(req.getCookies());
-        if (authCookie != null) {
-//            User user = usersService.getUserByCookie(authCookie.getValue());
+//        Cookie authCookie = authCookie(req.getCookies());
+//        if (authCookie != null) {
             List<Product> products = productsService.getAll(category);
             modelMap.addAttribute("products", products);
             return "shop";
-        }
-        return "signIn";
+//        }
+//        return "signIn";
     }
 
     @PostMapping(value = "/shop")
     public void addProductInBasket(@RequestParam("id") Long id, HttpServletRequest request) {
-        Cookie authCookie = authCookie(request.getCookies());
         System.out.println(id + " Ура, я дошел");
 
         Cookie[] cookies = request.getCookies();
@@ -57,44 +64,36 @@ public class ProductsController {
                 cookieValue = cookie.getValue();
             }
         }
+//        Long userId = currentUser(request);
 //        if (authCookie != null) {
 //            String auth = authCookie.getValue();
 //            System.out.println("auth = "+auth);
+
             User user = usersRepository.findByCookie(cookieValue);
             Basket usersBasket = basketRepository.getBasketByUserId(user.getUserID());
-            basketRepository.addProductToBasket(usersBasket.getBasketID(), id);
-        }
-
-
-    private Cookie authCookie(Cookie[] cookies) {
-        if (cookies != null) {
-            for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("auth")) {
-                    if (usersService.isExistByCookie((String)cookie.getValue())) {
-                        return cookie;
-                    }
-                }
+//        Basket usersBasket = basketRepository.getBasketByUserId(userId);
+//        User user = usersRepository.findById(userId);
+        List<Product> allproducts = basketRepository.findAllProductsByUserID(user);
+            int i=0;
+            for (Product all: allproducts){
+                if (all.getId().equals(id)) i++;
             }
+            if (i==0){
+            basketRepository.addProductToBasket(usersBasket.getBasketID(), id);}
         }
-        return null;
-    }
 
-//    @PostMapping(value = "/users")
-//    public String addUser(User user) {
-//        usersService.addUser(user);
-//        return "redirect:/users";
+
+//    private Cookie authCookie(Cookie[] cookies) {
+//        if (cookies != null) {
+//            for (Cookie cookie : cookies) {
+//                if (cookie.getName().equals("auth")) {
+//                    if (usersService.isExistByCookie(cookie.getValue())) {
+//                        return cookie;
+//                    }
+//                }
+//            }
+//        }
+//        return null;
 //    }
 
-//    @PostMapping(value = "/api/shop", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-//    public List<Product> getProductsAsJson( @RequestParam(name="category") String category) {
-//        return productsService.getAll(category);
-//    }
-
-//    @PostMapping(value = "/api/users", produces = MediaType.APPLICATION_JSON_VALUE,
-//            consumes = MediaType.APPLICATION_JSON_VALUE)
-//    @ResponseBody
-//    public List<User> addUserAsJson(@RequestBody User user) {
-//        usersService.addUser(user);
-//        return usersService.getAllUsers();
-//    }
 }

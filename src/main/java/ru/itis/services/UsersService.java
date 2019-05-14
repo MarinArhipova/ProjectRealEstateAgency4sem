@@ -18,5 +18,6 @@ public interface UsersService {
     User getUserByCookie(String cookie);
 
     boolean isExistByCookie(String cookieValue);
-//    boolean checkReg(String email);
+
+    boolean checkReg(String email);
 }

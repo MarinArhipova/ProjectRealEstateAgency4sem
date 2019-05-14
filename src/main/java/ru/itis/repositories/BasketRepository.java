@@ -21,4 +21,6 @@ public interface BasketRepository extends CrudRepository<Basket> {
     void deleteProductsByUserID(Long id);
 
     List<Basket> findAll();
+
+    void deleteOneProduct(Long basketId, Long productId);
 }

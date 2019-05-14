@@ -22,7 +22,7 @@
     <header>
         <div class="inner">
             <h1 class="logo"><a href="/home"></a></h1>
-            <a href="/signIn" style="padding:0 10px 0 10px "><i class="far fa-user fa-3x"
+            <a href="/logout" style="padding:0 10px 0 10px "><i class="far fa-user fa-3x"
                                                                 style="float: right; color: #24ace3; opacity: 0.5 ; padding: 0 10px 0 10px"></i></a>
             <a href="/basket" style="padding: 0 10px 0 10px"><i class="fas fa-shopping-basket fa-3x"
                                                                 style="float: right; color: #24ace3 ; opacity: 0.5; padding: 0 10px 0 10px"></i></a>
@@ -89,15 +89,11 @@ function sender(id) {
             url: '/shop',
             data: {
                 id: id
-            }
+            },
+            success: alert("Успешно добавлено")
         })
-            .done(function (data) {
-                console.log(data);
-                alert("Успешно добавлено");
-            }).fail(function () {
-            alert("Что-то пошло не так");
-        });
     }
 </script>
+
 </body>
 </html>

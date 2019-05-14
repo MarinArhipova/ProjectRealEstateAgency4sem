@@ -28,6 +28,6 @@ public class WebInitializer implements WebApplicationInitializer {
         ServletRegistration.Dynamic servlet = container.addServlet("dispatcher", dispatcherServlet);
         servlet.setLoadOnStartup(1);
         servlet.addMapping("/");
-//        container.addFilter("logFilter", LogFilter.class).addMappingForUrlPatterns(null, false, "/*");
+//        container.addFilter("logFilter", LogFilter.class).addMappingForUrlPatterns(null, false, "/basket","/deleteproduct", "/mail", "/home","/shop");
     }
 }

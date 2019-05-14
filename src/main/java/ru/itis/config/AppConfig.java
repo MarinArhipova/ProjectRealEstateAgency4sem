@@ -1,6 +1,10 @@
 package ru.itis.config;
 
-import org.springframework.context.annotation.Configuration;
+//import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,14 +13,14 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.servlet.ViewResolver;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+//import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
@@ -24,12 +28,15 @@ import javax.sql.DataSource;
 import java.util.Arrays;
 import java.util.Properties;
 
-@Configuration //— собственно эта аннотация и говорит о том, что данный класс является Java Configuration
-@EnableWebMvc// — эта аннотация разрешает нашему проекту использовать MVC;
+//@Configuration //— собственно эта аннотация и говорит о том, что данный класс является Java Configuration
 @ComponentScan("ru.itis")
 //— аналогично тому component-scan который был в mvc-dispatcher-servlet.xml, говорит, где искать компоненты проекта.
 @PropertySource("classpath:ru/itis//application.properties")
-public class AppConfig implements WebMvcConfigurer {
+@EnableTransactionManagement
+@EnableWebMvc// — эта аннотация разрешает нашему проекту использовать MVC;
+@EnableJpaRepositories(basePackages = "ru.itis.repositories")
+//public class AppConfig implements WebMvcConfigurer {
+public class AppConfig extends WebMvcConfigurerAdapter {
 
     @Autowired
     private Environment environment;
@@ -85,13 +92,22 @@ public class AppConfig implements WebMvcConfigurer {
         return new BCryptPasswordEncoder();
     }
 
+//    @Bean
+//    public LocalSessionFactoryBean sessionFactory() {
+//        LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
+//        sessionFactory.setDataSource(dataSource());
+//        sessionFactory.setPackagesToScan("ru.itis.models");
+//        sessionFactory.setHibernateProperties(hibernateProperties());
+//        return sessionFactory;
+//    }
+
     @Bean
-    public LocalSessionFactoryBean sessionFactory() {
-        LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-        sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan("ru.itis.models");
-        sessionFactory.setHibernateProperties(hibernateProperties());
-        return sessionFactory;
+    public PlatformTransactionManager transactionManager() {
+        JpaTransactionManager transactionManager
+                = new JpaTransactionManager();
+        transactionManager.setEntityManagerFactory(
+                entityManagerFactory().getObject());
+        return transactionManager;
     }
 
     private Properties hibernateProperties() {

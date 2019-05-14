@@ -28,6 +28,9 @@
                                 Регистрация
                             </h1>
                             <form method="post" class="form" action="/signUp">
+                                <#if error??>
+                                    <h1>Такой логин уже используется</h1>
+                                </#if>
                                 <p><input name="firstName" placeholder="Имя" class="feedback_input"></p>
                                 <p><input name="lastName" placeholder="Фамилия" class="feedback_input"></p>
                                 <p><input name="patronymic" placeholder="Отчество" class="feedback_input"></p>

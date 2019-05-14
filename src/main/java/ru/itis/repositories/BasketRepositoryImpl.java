@@ -20,20 +20,13 @@ public class BasketRepositoryImpl implements BasketRepository {
             "select * from basket where basket.user_id = ?";
     //language=SQL
     private static final String SQL_INSERT_BASKET =
-            "insert into basket(basket_id, user_id) values (?,?);";
-
+            "insert into basket(basket_id, user_id) values (?,? );";
+    //language=SQL
+    private static final String SQL_DELETE_ONE_PRODUCT =
+            "delete from basket_product where basket_id = ? and product_id = ?";
     //language=SQL
     private static final String SQL_DELETE_PRODUCT =
-            "delete from basket_product where (basket_id = ? and product_id = ?)";
-
-    //language=SQL
-    private static final String SQL_SELECT_ALL = "select * " +
-            "from product where product.product_id IN(" +
-            "  select basket_product.product_id from basket_product where basket_id IN (" +
-            "    select basket_id from basket where basket.user_id = ?" +
-            "    )" +
-            "  )";
-
+            "delete from basket_product where basket_id = ?";
 
     //language=SQL
     private static final String SELECT_ALL_PRODUCTS_BY_BASKETID =
@@ -54,7 +47,7 @@ public class BasketRepositoryImpl implements BasketRepository {
     public BasketRepositoryImpl(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
-//  Basket model;
+
     private RowMapper<Basket> basketRowMapper = (resultSet, i) -> Basket.builder()
             .basketID(resultSet.getLong("basket_id"))
             .userID(resultSet.getLong("user_id"))
@@ -69,11 +62,10 @@ public class BasketRepositoryImpl implements BasketRepository {
             .category(resultSet.getString("category"))
             .build();
 
-
-//    @Override
-//    public List<Basket> findAll() {
-//        return jdbcTemplate.query(SQL_SELECT_ALL, basketRowMapper, model.getUser().getUserID());}
-
+    @Override
+    public void deleteOneProduct(Long basketId, Long productId) {
+        jdbcTemplate.update(SQL_DELETE_ONE_PRODUCT, basketId, productId);
+    }
 
     @Override
     public List<Product> findAllProductsByUserID(User user) {
@@ -86,15 +78,11 @@ public class BasketRepositoryImpl implements BasketRepository {
     }
 
     @Override
-    public void addProductToBasket(long productId, long basketId) {
+    public void addProductToBasket(long basketId, long productId) {
         jdbcTemplate.update(INSERT_PRODUCT_TO_BASKET, basketId, productId);
 
     }
 
-//    @Override
-//    public void deleteProductsByUserID(Long id) {
-//        jdbcTemplate.query(DELETE_DATA_FROM_BASKET_BY_USERID, basketRowMapper, model.getUser().getUserID());
-//    }
 
     @Override
     public void update(Basket model) {
@@ -108,7 +96,7 @@ public class BasketRepositoryImpl implements BasketRepository {
 
     @Override
     public void delete(Basket model) {
-
+        jdbcTemplate.update(SQL_DELETE_PRODUCT, model.getBasketID());
     }
 
 
@@ -125,6 +113,7 @@ public class BasketRepositoryImpl implements BasketRepository {
 
     @Override
     public void deleteProductsByUserID(Long id) {
+        jdbcTemplate.update(DELETE_DATA_FROM_BASKET_BY_USERID, id);
     }
 
     @Override

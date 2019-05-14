@@ -14,13 +14,14 @@ import javax.persistence.*;
 //@Entity
 //@Table(name = "auth")
 public class Auth {
-//    @Column(name = "user_id")
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(name = "id")
     private Long id;
 //    @Column(name = "cookie_value")
     private String cookieValue;
-
-//    private User user;
-//    private Long userId;
+//    @Column(name = "user_id")
+    private Long userId;
 
 }
 

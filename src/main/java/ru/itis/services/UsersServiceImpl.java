@@ -1,5 +1,6 @@
 package ru.itis.services;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import ru.itis.forms.SignInForm;
 import ru.itis.forms.SignUpForm;
@@ -19,10 +20,6 @@ import java.util.UUID;
 public class UsersServiceImpl implements UsersService {
     @Autowired
     UsersRepository usersRepository;
-
-//    @Autowired
-//    private EmailService emailService;
-
 
     @Autowired
     private BasketRepository basketRepository;
@@ -45,23 +42,12 @@ public class UsersServiceImpl implements UsersService {
 
     @Override
     public String signIn(SignInForm signInForm) {
-//        Optional<User> userOptional = usersRepository.findByEmail(signInForm.getEmail());
-//        User user;
         User user = usersRepository.findByEmail(signInForm.getEmail());
-
-//        if (userOptional.isPresent()) {
-//            user = userOptional.get();
-//            if (!passwordEncoder.matches(signInForm.getPassword(), user.getHashPassword())) {
-//                throw new IllegalArgumentException("Wrong password or email");
-//            }
-//        } else throw new IllegalArgumentException("Wrong password or email");
-
 
         if (user != null && passwordEncoder.matches(signInForm.getPassword(), user.getHashPassword())) {
             String cookieValue = UUID.randomUUID().toString();
             Auth auth = Auth.builder()
-//                    .user(user)
-                    .id(user.getUserID())
+                    .userId(user.getUserID())
                     .cookieValue(cookieValue)
                     .build();
             authRepository.save(auth);
@@ -82,11 +68,6 @@ public class UsersServiceImpl implements UsersService {
                 .build();
         usersRepository.save(user);
 
-//        String text = "<a href='http://localhost:8080/confirm/" + user.getConfirmString() + "'>" +"Пройдите по ссылке" + "</a>";
-//        System.out.println(text);
-//        emailService.sendMail("Подтвреждение регистрации", text, user.getEmail());
-
-
         Basket basket = Basket.builder()
                 .userID(user.getUserID())
                 .basketID(user.getUserID())
@@ -94,13 +75,13 @@ public class UsersServiceImpl implements UsersService {
         basketRepository.save(basket);
     }
 
-//    @Override
-//    public boolean checkReg(String email) {
-//        if (authRepository.findOneByEmail(email) != null) {
-//            return true;
-//        }
-//        return false;
-//    }
+    @Override
+    public boolean checkReg(String email) {
+        if (usersRepository.findByEmail(email) != null) {
+            return true;
+        }
+        return false;
+    }
 
     @Override
     public User getUserByCookie(String cookie) {

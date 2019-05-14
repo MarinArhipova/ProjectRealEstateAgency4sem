@@ -1,7 +1,6 @@
 package ru.itis.controllers;
 
-
-import org.springframework.context.annotation.Lazy;
+import org.springframework.ui.Model;
 import ru.itis.forms.SignInForm;
 import ru.itis.forms.SignUpForm;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ru.itis.services.UsersService;
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
@@ -22,7 +22,7 @@ public class AuthController {
     }
 
     @PostMapping(value = "/signUp")
-    public String signUpUser(@RequestParam(name = "firstName") String firstName, @RequestParam(name = "lastName") String lastName,
+    public String signUpUser(Model model, @RequestParam(name = "firstName") String firstName, @RequestParam(name = "lastName") String lastName,
                              @RequestParam(name = "patronymic") String patronymic, @RequestParam(name = "email") String email,
                              @RequestParam(name = "phoneNumber") String phoneNumber, @RequestParam(name = "password") String password) {
         SignUpForm signUpForm = SignUpForm.builder()
@@ -34,6 +34,11 @@ public class AuthController {
                 .hashPassword(password)
                 .build();
         usersService.signUp(signUpForm);
+//        if (usersService.checkReg(signUpForm.getEmail())) {
+//            return "redirect:/signIn";
+//        }
+//        model.addAttribute("error", "error");
+//        return "signUp";
         return "redirect:/signIn";
     }
 
@@ -58,17 +63,26 @@ public class AuthController {
         return "signIn";
     }
 
-//    @GetMapping("/common/logout")
-//    public String signUp(HttpServletRequest request, HttpServletResponse response) {
+    @GetMapping(value = "/logout")
+    @ResponseBody
+    public String logOut(HttpServletRequest req, HttpServletResponse resp) {
+        Cookie[] cookies = req.getCookies();
+        for (int i = 0; i < cookies.length; i++) {
+            cookies[i].setMaxAge(0);
+            resp.addCookie(cookies[i]);
+        }
+        return "redirect:/signIn";
+    }
+
 //        Cookie cookie = null;
-//        Cookie[] cookies = request.getCookies();
+//        Cookie[] cookies = req.getCookies();
 //        for (int i = 0; i < cookies.length; i++) {
 //            if (cookies[i].getName().equals("auth")) {
 //                cookie = cookies[i];
 //            }
 //        }
 //        usersService.delete(cookie.getValue());
-//        return "redirect:/signUp";
+//        return "redirect:/signIn";
 //    }
 
 }
